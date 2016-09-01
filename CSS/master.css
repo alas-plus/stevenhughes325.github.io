@@ -20,6 +20,10 @@ background-color: black;
 margin: 0px;
 }
 
+img{
+  height: 40vh;
+}
+
 .title{
   margin: auto;
   align: center;
