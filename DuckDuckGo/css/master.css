@@ -1,0 +1,48 @@
+html{
+  font-family: sans-serif;
+  background-color: #FFD27F;
+}
+
+body{
+  margin: 0px;
+}
+
+.header{
+  height: 10vh;
+  width: 100vw;
+  text-align: center;
+  background-color: #FFA500;
+  min-width: 500px;
+}
+
+.title{
+  font-size: 4em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.intro{
+  font-size: 2em;
+  margin: 2.5vh 1vw;
+  text-align: center;
+}
+
+.sBox{
+  width: 80vw;
+  margin: 1vh 10vw;
+}
+
+.controls{
+  margin: 0px 10vw;
+}
+
+.duck{
+  display: block;
+  margin: 2vh ;
+  align-items: center;
+}
+
+#duckpic{
+  display: block;
+  margin: auto;
+}

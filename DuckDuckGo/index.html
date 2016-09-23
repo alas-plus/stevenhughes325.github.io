@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Search Portal</title>
+    <link rel="stylesheet" href="./css/master.css" media="screen"/>
+    <link rel="icon" href="./media/ddg_icon.png" media="screen"/>
+  </head>
+  <body>
+    <div class="header">
+      <span class="title">Search @ DuckDuckGo</span>
+    </div>
+    <div class="main">
+      <div class="intro">
+        Type your search in below to search via DuckDuckGo!
+      </div>
+      <div class="search">
+        <form class="search" action="https://duckduckgo.com/" method="GET">
+          <input type="text" class="sBox" name="q" value=""/>
+          <br/>
+          <div class="controls">
+            <input type="submit" name="searchbutton" value="Search!">
+            <input type="reset" name="resetbutton" value="Reset!">
+          </div>
+        </form>
+      </div>
+      <div class="duck">
+        <img id="duckpic" src="./media/duck.png" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

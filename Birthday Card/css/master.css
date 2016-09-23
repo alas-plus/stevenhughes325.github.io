@@ -1,0 +1,36 @@
+@font-face {
+  font-family: whiskers;
+  src: url("../font/Whiskers.otf");
+}
+
+body{
+  background-color: teal;
+  margin: 0;
+}
+
+.banner{
+  background-color: #9feae4;
+  margin-top: 15vh;
+  height: 10vh;
+  width: 100vw;
+  text-align: center;
+  font-family: whiskers;
+  text-shadow: 2px 2px #000000;
+  font-size: 4em;
+  color: white;
+}
+
+.message{
+  background-color: #c5f6f2;
+  font-family: whiskers;
+  font-size: 2em;
+  text-align: center;
+  margin: 5vh 5vw;
+  padding: 2.5vh 2.5vw;
+  height: auto;
+}
+
+.image{
+  width: auto;
+  text-align: center;
+}
