@@ -47,6 +47,7 @@ body{
   width: 8vh;
   height: 8vh;
   float: left;
+  color: transparent;
 }
 
 .white_piece{
