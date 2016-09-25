@@ -76,7 +76,7 @@ function check_move(dToCheck){
   clear_moves();
   ACTIVE_PIECE = dToCheck;
   var dPieceColor = dToCheck.prop("id").split("_")[0];
-  var isKing = false;
+  var isKing = dToCheck.css("background-image") != "none";
   var par_xy = dToCheck.parent().prop("id").split("_");
   par_xy[0] = parseInt(par_xy[0]);
   par_xy[1] = parseInt(par_xy[1]);
@@ -111,7 +111,7 @@ function check_move(dToCheck){
 
 function check_jump(movingPiece, tgtPiece){
   var dPieceColor = movingPiece.prop("id").split("_")[0];
-  var isKing = false;
+  var isKing = movingPiece.css("background-image") != "none";
   var movXY = movingPiece.parent().prop("id").split("_");
   var foundJumps = false;
   movXY[0] = parseInt(movXY[0]);
@@ -151,7 +151,7 @@ function check_jump(movingPiece, tgtPiece){
 
 function only_check_jump(movingPiece, tgtPiece){
   var dPieceColor = movingPiece.prop("id").split("_")[0];
-  var isKing = false;
+  var isKing = movingPiece.css("background-image") != "none";
   var par_xy = tgtPiece.parent().prop("id").split("_");
   par_xy[0] = parseInt(par_xy[0]);
   par_xy[1] = parseInt(par_xy[1]);
@@ -173,7 +173,7 @@ function only_check_jump(movingPiece, tgtPiece){
 
 function only_check_move(dToCheck){
   var dPieceColor = dToCheck.prop("id").split("_")[0];
-  var isKing = false;
+  var isKing = dToCheck.css("background-image") != "none";
   var par_xy = dToCheck.parent().prop("id").split("_");
   par_xy[0] = parseInt(par_xy[0]);
   par_xy[1] = parseInt(par_xy[1]);
@@ -235,6 +235,12 @@ function move_piece(sqToMove){
   var pieceColor = ACTIVE_PIECE.prop("id").split("_")[0];
   var followUpAttack = false;
   var killed = false;
+  var squareRow = parseInt(sqToMove.prop("id").split("_")[0]);
+  if ((squareRow == 0 || squareRow == 0) &&
+  ACTIVE_PIECE.css("background-image") == "none") {
+    ACTIVE_PIECE.css("background-image", "url('./media/crown.png')");
+    piece_html = ACTIVE_PIECE.parent().html();
+  }
   ACTIVE_PIECE.parent().html("");
   if(sqToMove.html() != ""){
     var pieceToKill = sqToMove.html();

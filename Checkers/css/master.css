@@ -56,6 +56,9 @@ body{
 	height: 6vh;
   background-color: #FFF;
   margin: 1vh 1vh;
+  background-size: 4vh 3vh;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .blue_piece{
@@ -64,4 +67,7 @@ body{
   height: 6vh;
   background-color: #00F;
   margin: 1vh 1vh;
+  background-size: 4vh 3vh;
+  background-repeat: no-repeat;
+  background-position: center;
 }
