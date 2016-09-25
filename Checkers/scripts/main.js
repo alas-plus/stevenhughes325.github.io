@@ -93,15 +93,24 @@ function check_move(dToCheck){
     if(par_xy[1] != 7 && (dPieceColor == "blue" || isKing))
       neighbors.push((par_xy[0] + 1) + "_" + (par_xy[1] + 1));
   }
+  var jumps = false;
   for(var e = 0; e < neighbors.length; e += 1){
-    if($( "div#" + neighbors[e]  ).html() == ""){
-      var s_class = $( "div#" + neighbors[e]  ).prop("class");
-      $( "div#" + neighbors[e]  ).removeClass(s_class);
-      $( "div#" + neighbors[e]  ).addClass("move_square");
-    }else if ($( "div#" + neighbors[e]  ).html().indexOf(dPieceColor) == -1) {
+    if ($( "div#" + neighbors[e]  ).html() != "" &&
+    $( "div#" + neighbors[e]  ).html().indexOf(dPieceColor) == -1) {
       // Means there is an opposing piece in a neighboring space
       // Need to check for valid jumps
-      check_jump(dToCheck, $( "div#" + $( "div#" + neighbors[e]  ).children().prop("id")));
+      var nPiece = $( "div#" + neighbors[e] ).children().prop("id");
+      check_jump(dToCheck, $( "div#" + nPiece));
+      jumps = true;
+    }
+  }
+  if(!jumps){
+    for(var e = 0; e < neighbors.length; e += 1){
+      if($( "div#" + neighbors[e]  ).html() == ""){
+        var s_class = $( "div#" + neighbors[e]  ).prop("class");
+        $( "div#" + neighbors[e]  ).removeClass(s_class);
+        $( "div#" + neighbors[e]  ).addClass("move_square");
+      }
     }
   }
   $( ".move_square" ).click(function(){
