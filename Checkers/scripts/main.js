@@ -245,7 +245,7 @@ function move_piece(sqToMove){
   var followUpAttack = false;
   var killed = false;
   var squareRow = parseInt(sqToMove.prop("id").split("_")[0]);
-  if ((squareRow == 0 || squareRow == 7) &&
+  if ((squareRow == 0 || squareRow == 0) &&
   ACTIVE_PIECE.css("background-image") == "none") {
     ACTIVE_PIECE.css("background-image", "url('./media/crown.png')");
     piece_html = ACTIVE_PIECE.parent().html();
