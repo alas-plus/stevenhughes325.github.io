@@ -1,8 +1,91 @@
+@font-face {
+  font-family: arcade;
+  src: url("../font/arcade.ttf");
+}
+
 body{
   margin: 0;
+  font-family: arcade;
 }
 
 .main{
   background-color: #D3D3D3;
   height: 100vh;
+  width: 100vw;
+}
+
+/* 5 vh*/
+.title{
+  width: 100vw;
+  height: 3vh;
+  font-size: 2em;
+  text-align: center;
+  padding: 1vh 0vw;
+  min-height: 32px;
+}
+
+/* 20h 10w */
+.playarea{
+  background-color: red;
+  height: 80vmin;
+  width: 70vmin;
+  margin: 1.5vh auto;
+}
+
+.boardarea{
+  background-color: blue;
+  width: 40vmin;
+  height: 80vmin;
+  float: left;
+}
+
+.board{
+  background-color: maroon;
+  width: 40vmin;
+  height: 80vmin;
+}
+
+.boardsquare{
+  width: 4vmin;
+  height: 4vmin;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+  float: left;
+}
+
+.tetPiece{
+  width: 4vmin;
+  height: 4vmin;
+  background-color: black;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+.infoarea{
+  background-color: green;
+  width: 30vmin;
+  height: 80vmin;
+  float: left;
+}
+
+.hold{
+  background-color: teal;
+  height: 20vmin;
+  width: 30vmin;
+}
+
+.forecast{
+  background-color: purple;
+  height: 40vmin;
+  width: 30vmin;
+}
+
+.score{
+  background-color: yellow;
+  height: 20vmin;
+  width: 30vmin;
 }
