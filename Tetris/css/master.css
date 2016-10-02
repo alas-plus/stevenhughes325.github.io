@@ -55,6 +55,16 @@ body{
   float: left;
 }
 
+.tetPiece{
+  width: 4vmin;
+  height: 4vmin;
+  background-color: black;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
 .infoarea{
   background-color: green;
   width: 30vmin;
