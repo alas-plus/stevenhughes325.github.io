@@ -29,14 +29,14 @@ body{
 }
 
 .red_square{
-  background-color: #898989;
+  background-color: #F00;
   width: 8vh;
   height: 8vh;
   float: left;
 }
 
 .black_square{
-  background-color: #050;
+  background-color: #000;
   width: 8vh;
   height: 8vh;
   float: left;
@@ -51,11 +51,10 @@ body{
 }
 
 .white_piece{
-  box-shadow: .3vh .3vh 1vh #111;
   border-radius: 50%;
 	width: 6vh;
 	height: 6vh;
-  background-color: #AA2222;
+  background-color: #FFF;
   margin: 1vh 1vh;
   background-size: 4vh 3vh;
   background-repeat: no-repeat;
@@ -63,11 +62,10 @@ body{
 }
 
 .blue_piece{
-  box-shadow: .3vh .3vh 1vh #111;
   border-radius: 50%;
   width: 6vh;
   height: 6vh;
-  background-color: #222;
+  background-color: #00F;
   margin: 1vh 1vh;
   background-size: 4vh 3vh;
   background-repeat: no-repeat;
