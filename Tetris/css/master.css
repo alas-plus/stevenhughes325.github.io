@@ -66,9 +66,9 @@ body{
 }
 
 #I{
-  background-color: blue;
+  background-color: cyan;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }
@@ -76,39 +76,39 @@ body{
 #J{
   background-color: blue;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }
 
 #L{
-  background-color: blue;
+  background-color: orange;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }
 
 #O{
-  background-color: blue;
+  background-color: yellow;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }
 
 #S{
-  background-color: blue;
+  background-color: lime;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }
 
 #Z{
-  background-color: blue;
+  background-color: red;
   border: solid;
-  border-color: blue;
+  border-color: black;
   border-width: 1px;
   margin: -1px;
 }

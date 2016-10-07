@@ -301,13 +301,13 @@ function move_piece(sqToMove){
     }
     BLACK_TURN = !BLACK_TURN;
     if(BLUE_PIECES.length == 0){
-      $("div.commentary").html("White Wins!!!");
+      $("div.commentary").html("Red Wins!!!");
     }else if(WHITE_PIECES.length == 0){
-      $("div.commentary").html("Blue Wins!!!");
+      $("div.commentary").html("Black Wins!!!");
     }else if(BLACK_TURN){
-      $("div.commentary").html("Blue's turn!");
+      $("div.commentary").html("Black's turn!");
     }else{
-      $("div.commentary").html("White's turn!");
+      $("div.commentary").html("Red's turn!");
     }
   }
 }
