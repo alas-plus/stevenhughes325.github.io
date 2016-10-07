@@ -65,6 +65,54 @@ body{
   margin: -1px;
 }
 
+#I{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+#J{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+#L{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+#O{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+#S{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
+#Z{
+  background-color: blue;
+  border: solid;
+  border-color: blue;
+  border-width: 1px;
+  margin: -1px;
+}
+
 .infoarea{
   background-color: green;
   width: 30vmin;

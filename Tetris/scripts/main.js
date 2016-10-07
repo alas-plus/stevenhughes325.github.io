@@ -63,24 +63,24 @@ $("document").ready(function(){
 
 function game_loop(){
   if(ACTIVE_PIECE == null){
-    switch (Math.floor((Math.random() * 5) + 1)) {
-      case 0:
-        ACTIVE_PIECE = new Tetrimino("I", pos = [0, 4]);
-        break;
+    switch (Math.floor((Math.random() * 6) + 1)) {
       case 1:
-        ACTIVE_PIECE = new Tetrimino("J", pos = [0, 4]);
+        ACTIVE_PIECE = new Tetrimino("I", pos = [0, 3]);
         break;
       case 2:
-        ACTIVE_PIECE = new Tetrimino("L", pos = [0, 4]);
+        ACTIVE_PIECE = new Tetrimino("J", pos = [0, 3]);
         break;
       case 3:
-        ACTIVE_PIECE = new Tetrimino("O", pos = [0, 4]);
+        ACTIVE_PIECE = new Tetrimino("L", pos = [0, 3]);
         break;
       case 4:
-        ACTIVE_PIECE = new Tetrimino("S", pos = [0, 4]);
+        ACTIVE_PIECE = new Tetrimino("O", pos = [0, 3]);
         break;
       case 5:
-        ACTIVE_PIECE = new Tetrimino("Z", pos = [0, 4]);
+        ACTIVE_PIECE = new Tetrimino("S", pos = [0, 3]);
+        break;
+      case 6:
+        ACTIVE_PIECE = new Tetrimino("Z", pos = [0, 3]);
         break;
     }
 
@@ -151,6 +151,8 @@ function drop_piece(){
   }
   if(can_fall){
       ACTIVE_PIECE.position[0] += 1;
+    }else{
+
     }
 }
 
@@ -160,7 +162,7 @@ function draw_piece(){
       for (var j = 0; j < 4; j++) {
         if(ACTIVE_PIECE.current_shape[i][j] == 1){
           var par = BOARD_DIVS[i + ACTIVE_PIECE.position[0]][j + ACTIVE_PIECE.position[1]];
-          $(par).html("<div class='tetPiece'></div>");
+          $(par).html("<div id='" + ACTIVE_PIECE.type + "' class='tetPiece'></div>");
         }
       }
   }
@@ -189,6 +191,7 @@ function check_collisions(mino, pos){
 }
 
 function Tetrimino(type, pos = [0, 0]){
+  this.type = type;
   this.shapes = TETRIMINOS[type],
   this.form = 0,
   this.current_shape = this.shapes[this.form],
@@ -196,9 +199,11 @@ function Tetrimino(type, pos = [0, 0]){
 };
 
 Tetrimino.prototype.rotate = function () {
-   var new_form = this.form + 1;
-   if(new_form >= this.shapes.length)
-     new_form = 0;
-   if(!check_collisions(this.shapes[new_form], this.position))
-     this.form = new_form;
+  var new_form = this.form + 1;
+  if(new_form >= this.shapes.length)
+    new_form = 0;
+  if(!check_collisions(this.shapes[new_form], this.position)){
+    this.form = new_form;
+    this.current_shape = this.shapes[this.form];
+  }
 }
