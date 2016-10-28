@@ -1,0 +1,108 @@
+@font-face {
+  font-family: roboto;
+  src: url("../font/roboto.ttf");
+}
+
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: roboto;
+    background-color: #ddd;
+}
+
+.header{
+  width: 100vw;
+  height: 10vh;
+}
+
+.month{
+  float: left;
+  width: 33vw;
+  height: 10vh;
+  font-size: 6vmin;
+}
+
+.picker{
+  float: left;
+  width: 33vw;
+  height: 10vh;
+}
+
+.login{
+  float: left;
+  width: 33vw;
+  height: 10vh;
+}
+
+.login label{
+  display: inline-block;
+  width: 10vw;
+  float: left;
+  clear: left;
+  text-align: right;
+}
+
+.login input{
+  display: inline-block;
+  width: 15vw;
+  float: left;
+  padding: 1px;
+}
+
+.user_login span{
+  display: inline-block;
+  width: 15vw;
+  margin: 0px 9vw;
+}
+
+.login input[type=button]{
+  align-items: center;
+  width: 7.0vw;
+  background-color: #9cc;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+}
+
+.login input[type=button]:hover{
+  background-color: #7aa;
+}
+
+#login_error{
+  color: red;
+}
+
+.month_spacer{
+  width: 15vw;
+  padding-top: 50vh;
+}
+
+.calendar{
+  height: 90vh;
+  width: 70vw;
+  float: left;
+  margin: 0px 15vw;
+}
+
+table{
+  float: left;
+}
+
+tr{
+  height: 11vh;
+  width: 70vw;
+}
+
+td{
+  border: solid;
+  border-width: thin;
+  padding: 0px;
+  height: 11vh;
+  width: 10vw;
+  vertical-align: top;
+  background-color: #9cc;
+}
+
+.empty{
+  background-color: #7aa;
+}

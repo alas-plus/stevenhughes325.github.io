@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="icon" href="./media/icon.png">
+    <script type="text/javascript" src="./scripts/main.js"></script>
+  </head>
+  <body onload="defCal()">
+    <div class="header">
+      <span id="month_span" class="month">Month</span>
+      <div class="picker">
+        <form>
+          Month:
+          <select id="month_select" name="month">
+            <option value="1">January</option>
+            <option value="2">Feburary</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          Year:
+          <input type="text" id="year_box" value="2016">
+          <input type="button" name="sub" value="Submit" onclick="fetchCal()">
+        </form>
+      </div>
+      <div class="login">
+        <form class="user_login">
+          <label for="username">Username:</label>
+          <input type="username" name="username" id="username" value="">
+          <br>
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" value="">
+          <br>
+          <span>
+          <input type="button" name="login" value="Login" onclick="userLogin()">
+          <input type="button" name="signup" value="Sign Up">
+          </span>
+        </form>
+        <span id="login_error"></span>
+      </div>
+    </div>
+    <div class="calendar" id="calendar">
+    </div>
+  </body>
+</html>
