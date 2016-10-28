@@ -7,7 +7,7 @@
     <link rel="icon" href="./media/icon.png">
     <script type="text/javascript" src="./scripts/main.js"></script>
   </head>
-  <body onload="defCal()">
+  <body onload="initialize()">
     <div class="header">
       <span id="month_span" class="month">Month</span>
       <div class="picker">
@@ -42,7 +42,7 @@
           <br>
           <span>
           <input type="button" name="login" value="Login" onclick="userLogin()">
-          <input type="button" name="signup" value="Sign Up">
+          <input type="button" name="signup" value="Sign Up" onclick="userSignup()">
           </span>
         </form>
         <span id="login_error"></span>
