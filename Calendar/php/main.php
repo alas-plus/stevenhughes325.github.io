@@ -3,10 +3,25 @@
 // request variables
 $month = $_REQUEST["month"];
 $year = $_REQUEST["year"];
+$sess = $_REQUEST["sess"];
+
+if ($sess != null){
+  session_id($sess);
+  session_start();
+}
+
+// DB connection variables
+$db_host = "localhost";
+$db_user = "id86089_shughes";
+$db_pass = "tshughes325";
+$db_name = "id86089_caldb";
+
 // Call the function to make the calendar table and echo the result
 echo genCal($month, $year);
 
 function genCal($mon = '', $yr = ''){
+  // References to the db login details
+  global $db_host, $db_user, $db_pass, $db_name, $sess;
   // timestamp for date
   $timestamp = mktime(0, 0, 0, $mon, 1, $yr);
   // The number of days in the month
@@ -15,6 +30,25 @@ function genCal($mon = '', $yr = ''){
   $monStarts = date("w", $timestamp);
   // The Current day of the month
   $cday = 1;
+  $conn = null;
+  $events = array();
+  if ($sess != null) {
+    // If the user is logged in
+    $dStart = date("Y-m-d", $timestamp);
+    $dEnd = date("Y-t-d", $timestamp);
+    $u = $_SESSION["user"];
+    // Connection object for the DB
+    $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
+    $sql = "SELECT * FROM events WHERE user = '$u'";
+    // eDate >= '$dStart' AND eDate <= '$dEnd' AND
+    $res = $conn->query($sql);
+    echo $res->num_rows;
+    if ( $res->num_rows > 0 ) {
+      while($row = $res->fetch_assoc()) {
+        array_push($events, array($row["id"], $row["title"], $row["details"], $row["eDate"]));
+      }
+    }
+  }
   // The table and headers are always the same
   $table = "<table>
   <tr class='daysOweek'>
@@ -40,7 +74,15 @@ function genCal($mon = '', $yr = ''){
       }
       else {
         // Add a cell for the current day
-        $table .= "\n<td>$cday</td>";
+        $table .= "\n<td>\n$cday\n";
+        if(count($events) > 0){
+          for ($i=0; $i < count($events); $i++) {
+            if ($events[$i][3] == date("Y-m-d", mktime(0, 0, 0, $mon, $cday, $yr))) {
+              $table .= "<div class='tiny_event' id='event_" . $events[$i][0] . "' onclick='editEvent()'>" . $events[$i][1] . "</div>";
+            }
+          }
+        }
+        $table .= "</td>";
         $cday += 1;
       }
     }

@@ -32,23 +32,27 @@
           <input type="button" name="sub" value="Submit" onclick="fetchCal()">
         </form>
       </div>
-      <div class="login">
-        <form class="user_login">
-          <label for="username">Username:</label>
-          <input type="username" name="username" id="username" value="">
-          <br>
-          <label for="password">Password:</label>
-          <input type="password" name="password" id="password" value="">
-          <br>
-          <span>
-          <input type="button" name="login" value="Login" onclick="userLogin()">
-          <input type="button" name="signup" value="Sign Up" onclick="userSignup()">
-          </span>
-        </form>
+      <div class="login" id="login_div">
         <span id="login_error"></span>
       </div>
     </div>
     <div class="calendar" id="calendar">
     </div>
+    <div class="event_edit">
+      <div class="event_form">
+        <form>
+          <input type="hidden" name="ev_id" id="ev_id" value="">
+          <label for="ev_date">Date:</label>
+          <input type="date" name="ev_date" id="ev_date" value="">
+          <br>
+          <label for="ev_title">Title:</label>
+          <input type="text" name="ev_title" id="ev_title" value="">
+          <br>
+          <label for="ev_desc">Description:</label>
+          <input type="text" name="ev_desc" id="ev_desc" value="">
+          <br>
+          <input type="button" name="ev_submit" value="Submit" onclick="subEvent()">
+        </form>
+      </div>
   </body>
 </html>
