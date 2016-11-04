@@ -11,7 +11,8 @@ function initialize() {
       if (this.readyState == 4 && this.status == 200) {
         // If the request is successful, set the table to the response
         document.getElementById("login_div").innerHTML =
-        "Welcome " + this.responseText + document.getElementById("login_div").innerHTML;
+        "Welcome " + this.responseText + document.getElementById("login_div").innerHTML +
+        "<input type='button' value='Add an Event' onclick='showEvDialog()'>";
       }
     };
     // The request variables
@@ -40,8 +41,34 @@ function initialize() {
   defCal();
 }
 
+function showEvDialog(){
+  document.getElementById("event_edit").style.display = "block";
+}
+
 function editEvent(){
-  console.log(event.target.id)
+  var eID = event.target.id.split('_')[1];
+  var edit_event_xhttp = new XMLHttpRequest();
+  // add a function to call when the state changes successfully.
+  edit_event_xhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+      // If the request is successful, set the table to the response
+      var resp = this.responseText.split(';');
+      document.getElementById('ev_id').value = resp[0];
+      document.getElementById('ev_title').value = resp[1];
+      document.getElementById('ev_desc').value = resp[2];
+      document.getElementById('ev_date').value = resp[3];
+      showEvDialog();
+    }
+  };
+  // The request variables
+  var pString = "sess=" + SESSION_COOKIE + "&id=" + eID + "&mode=1";
+  // Open the connection with the server asychronously
+  edit_event_xhttp.open("POST", "./php/event.php", true);
+  // Set a request header for POST
+  edit_event_xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  // Send the request
+  edit_event_xhttp.send(pString);
+
 }
 
 function subEvent(){
@@ -54,7 +81,7 @@ function subEvent(){
   event_xhttp.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
       // If the request is successful, set the table to the response
-      console.log(this.responseText);
+      location.reload();
     }
   };
   if (id == "") {
@@ -67,7 +94,14 @@ function subEvent(){
     // Send the request
     event_xhttp.send(pString);
   } else {
-    console.log("TODO");
+    // The request variables
+    var pString = "id=" + id + "&date=" + date + "&title=" + title + "&desc=" + desc + "&mode=0" + "&sess=" + SESSION_COOKIE;
+    // Open the connection with the server asychronously
+    event_xhttp.open("POST", "./php/event.php", true);
+    // Set a request header for POST
+    event_xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Send the request
+    event_xhttp.send(pString);
   }
 }
 
@@ -115,6 +149,78 @@ function defCal(){
   fetchCal();
 }
 
+function userLogin(){
+  // Called when Login is clicked. Attempts to log the user in with the given
+  // credentials
+  var username = document.getElementById("username").value,
+    password = document.getElementById("password").value;
+    if ( username.trim() === '' || password.trim() === ''){
+      document.getElementById("login_error").innerHTML =
+        "Please provide a valid username and password";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    } else {
+      document.getElementById("login_error").innerHTML = "";
+      var xhttp = new XMLHttpRequest();
+      // add a function to call when the state changes successfully.
+      xhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+          // If the request is successful, set the table to the response
+          if(this.responseText.indexOf("ERROR:") > -1){
+              document.getElementById("login_error").innerHTML = this.responseText;
+          } else {
+              location.reload();
+          }
+        }
+      };
+      // The request variables
+      // Mode is create or login
+      var pString = "user=" + username + "&pass=" + password + "&mode=" + "1";
+      // Open the connection with the server
+      xhttp.open("POST", "./php/login.php", true);
+      // Set a request header for POST
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Send the request
+      xhttp.send(pString);
+    }
+}
+
+function userSignup(){
+  // Called when sign up is clicked. Attempts to create a user in with the given
+  // credentials
+  var username = document.getElementById("username").value,
+    password = document.getElementById("password").value;
+    if ( !valUser(username) || !valPass(password)){
+      document.getElementById("login_error").innerHTML =
+        "Invalid username or password. Spaces are forbidden";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    } else {
+      document.getElementById("login_error").innerHTML = "";
+      var xhttp = new XMLHttpRequest();
+      // add a function to call when the state changes successfully.
+      xhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+          // If the request is successful, set the table to the response
+          if(this.responseText.indexOf("ERROR:") > -1){
+              document.getElementById("login_error").innerHTML = this.responseText;
+          } else {
+              location.reload();
+          }
+        }
+      };
+      // The request variables
+      // Mode is create or login
+      var pString = "user=" + username + "&pass=" + password + "&mode=" + "0";
+      // Open the connection with the server
+      xhttp.open("POST", "./php/login.php", true);
+      // Set a request header for POST
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Send the request
+      xhttp.send(pString);
+    }
+}
+
 function valYear(yr){
   yr = parseInt(yr);
   if(typeof(yr) ==='number' && (yr%1)===0){
@@ -150,15 +256,15 @@ function  valPass(pass){
   regex_lower = /[a-z]/,
   regex_number = /[0-9]/;
   if (p.indexOf(' ') > -1){
-    alert("password space");
+    alert("All Passwords require lowercase and uppercase letters, a number , and may not contain spaces.");
     return false;
   }
   if (p.length < 8){
-    alert("password Length");
+    alert("All Passwords require lowercase and uppercase letters, a number , and may not contain spaces.");
     return false;
   }
   if (!regex_number.test(p) || !regex_caps.test(p) || !regex_lower.test(p)){
-    alert("password reg");
+    alert("All Passwords require lowercase and uppercase letters, a number , and may not contain spaces.");
     return false;
   }
   return true;

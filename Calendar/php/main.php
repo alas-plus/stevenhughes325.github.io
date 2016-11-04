@@ -5,10 +5,11 @@ $month = $_REQUEST["month"];
 $year = $_REQUEST["year"];
 $sess = $_REQUEST["sess"];
 
-if ($sess != null){
+if (!is_null($sess)){
   session_id($sess);
   session_start();
 }
+
 
 // DB connection variables
 $db_host = "localhost";
@@ -42,7 +43,6 @@ function genCal($mon = '', $yr = ''){
     $sql = "SELECT * FROM events WHERE user = '$u'";
     // eDate >= '$dStart' AND eDate <= '$dEnd' AND
     $res = $conn->query($sql);
-    echo $res->num_rows;
     if ( $res->num_rows > 0 ) {
       while($row = $res->fetch_assoc()) {
         array_push($events, array($row["id"], $row["title"], $row["details"], $row["eDate"]));

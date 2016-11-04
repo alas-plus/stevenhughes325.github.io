@@ -36,7 +36,6 @@ function user_login($u, $p){
       session_start();
       $_SESSION["user"] = $u;
       $_SESSION["pass"] = $p;
-      echo session_id();
     } else {
       echo "ERROR: Invalid Password";
     }
@@ -62,7 +61,7 @@ function signup($u, $p){
       $p = password_hash($p, PASSWORD_DEFAULT);
       $insert_sql = "INSERT INTO users (username, password) VALUES ('$u', '$p')";
       if($conn->query($insert_sql) === TRUE){
-        echo "ERROR: Insert Successful!";
+        echo "Insert Successful!";
       }else{
         echo "ERROR: Unable to create user";
       }

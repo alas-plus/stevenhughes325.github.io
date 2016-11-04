@@ -118,7 +118,7 @@ td{
 }
 
 .event_edit{
-  display: block;
+  display: none;
   position: absolute;
   left: 40vw;
   width: 20vw;
